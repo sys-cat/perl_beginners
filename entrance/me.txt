@@ -1,0 +1,4 @@
+name: sys_cat
+age: 27
+language: japanese only
+skill: PHP, Ruby, Python, Golang
