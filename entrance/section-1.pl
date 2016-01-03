@@ -4,6 +4,7 @@ use warnings;
 
 use File::Spec;
 use File::Basename 'dirname';
+use DateTime;
 
 # 特殊定数の場合はこうなる
 printf "FILE -> %s\n", __FILE__;
@@ -23,3 +24,9 @@ for my $line (<$fh>) {
     print $line;
 }
 close($fh);
+
+print "今年いくつ？：";
+my $line = <STDIN>;
+my $dt = DateTime->now(time_zone => 'local');
+my $year = $dt->year - $line;
+printf "birth year is %i\n", $year;
