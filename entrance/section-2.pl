@@ -111,5 +111,60 @@ if ($if_str_hoge eq 'hello') {
 ## 空のリスト「()」
 ## undef
 
+# 複数の制御構文
+## PerlにはSwitchに当たるものがないので if/elsif/else で代用する
+my $if_some_hoge = 1;
+if($if_some_hoge == 1) {
+  print "\$if_some_hoge: $if_some_hoge\n";
+} elsif($if_some_hoge == 2) {
+  print "\$if_some_hoge: $if_some_hoge\n";
+} elsif($if_some_hoge == 3) {
+  print "\$if_some_hoge: $if_some_hoge\n";
+} else {
+  print "\$if_some_hoge: $if_some_hoge\n";
+}
+
+# 練習問題：変数に任意の値を代入して標準入力と一致しているかどうか確認する
+my $answer = "test";
+print "Answer? :";
+my $request = <STDIN>;
+chomp $request;
+if($answer eq $request) {
+  print "OK\n";
+} else {
+  print "NG\n";
+}
+
+# 論理演算子
+# if文で複雑な条件を扱いたい時は関係演算子を用いて複数の条件を連結させる
+## && -> 「かつ」、「and」。両方の条件が真となるときのみ真となる
+## || -> 「または」、「or」。条件のどちらか1つでも真となるならば真となる
+my $if_multi_hoge = 64;
+if($if_multi_hoge > 0 && $if_multi_hoge % 2 == 0) {
+  print "&&: OK\n";
+}
+if($if_multi_hoge > 0 || $if_multi_hoge % 2 == 1) {
+  print "||: OK\n";
+}
+
+# 練習問題：変数に任意の値を入力して標準入力とくらべて大きければ 'too big', 小さければ 'too small', -5〜+5の範囲内なら'near'と表示する
+my $multi_answer = 50;
+print "Number? :";
+my $multi_request = <STDIN>;
+chomp $multi_request;
+my $multi_answer_min = $multi_answer - 5;
+my $multi_answer_max = $multi_answer + 5;
+if($multi_answer_min<=$multi_request || $multi_answer_max>=$multi_request) {
+  print "near\n";
+} elsif($multi_answer == $multi_request){
+  print "OK\n";
+} elsif($multi_answer < $multi_request) {
+  print "too big\n";
+} elsif($multi_answer > $multi_request) {
+  print "too small\n";
+}
+
+# for文、配列
 # 配列・ハッシュ（連想配列）
 # 複数の要素を格納出来る箱
+## 数値や文字列をまとめて格納出来る
